@@ -1,0 +1,17 @@
+ASM     - nasm     file.asm -f bin -o file
+C/C++   - gcc      file.c -fuse-ld=lld -o file
+C#      - mcs      file.cs -out:file | mono file
+Go      - go       run file.go
+Python  - python   file.py
+R       - Rscript  file.r | gcc Bridge.c -use-ld=lld -fPIC -shared -o Bridge.so
+Rust    - rustc    file.ru -C prefer-dynamic -C link-arg=-fuse-ld=lld -o file
+Java    - javac    file.java | java file
+Zig     - zig      run file.zig
+Fortran - gfortran file.f90 -fuse-ld=lld -fno-range-check -o file
+Haskell - ghc      file.hs -dynamic -o file
+Lua     - lua      file.lua | gcc Bridge.c -use-ld=lld -fPIC -shared -llua5.3 -I/usr/include/lua5.3 -o Bridge.so
+Pascal  - fpc      file.p -ofile
+Perl    - perl     file.perl
+Ruby    - ruby     file.ruby
+Scala   - scalac   file.scala | scala file
+Js      - node     file.js
