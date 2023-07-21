@@ -1,3 +1,5 @@
+I prefer using the llvm linker because it create smaller files
+
 ASM     - nasm     file.asm -f bin -o file
 C/C++   - gcc      file.c -fuse-ld=lld -o file
 C#      - mcs      file.cs -out:file | mono file

@@ -1,9 +1,16 @@
 use IO::Socket::INET;
-$server=IO::Socket::INET->new(Listen=>5,LocalAddr=>'0.0.0.0',LocalPort=>3721,Proto=>'tcp',ReusePort=>true);
+$server=IO::Socket::INET->new(         //Create server with settings
+ Proto=>'tcp',
+ LocalPort=>3721,
+ LocalAddr=>'0.0.0.0',
+ Listen=>5,
+ ReusePort=>true);
 $buffer="";
-while(true){
-  $client=$server->accept();
-  $client->recv($buffer,0xFF);
-  print($buffer);
-  $client->send("Message received\n");
-  $client->close();}
+while(true)
+{
+  $client=$server->accept();           //Accept client
+  $client->recv($buffer,0xFF);         //Recieve message from client
+  print($buffer);                      //Print message to console
+  $client->send("Message received\n"); //Send response
+  $client->close();                    //Close client
+}
