@@ -4,6 +4,7 @@
  extern int socket(int family, int type, int protocol);
  extern int connect(int socket, void* address, int addrsz);
  extern int close(int socket);
+
 int main()
 {
  char addr[0x10] = 
@@ -18,7 +19,7 @@ int main()
  {
   int size = read(0, buffer, 0xFF); //Read the message from stdin
   int client = socket(2, 1, 0);     //Create the client afterwards so you don't have a useless socket sitting around
-  connect(client, &addr, 0x10);     //Connect to the server
+  connect(client, addr, 0x10);      //Connect to the server
   write(client, buffer, size);      //Write the message to the server
   size=read(client, buffer, 0xFF);  //Read the response from the server
   write(1, buffer, size);           //Write the response to stdout

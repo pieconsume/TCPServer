@@ -7,6 +7,7 @@
  extern int listen(int socket, int backlog);
  extern int accept(int socket, void* address, int* addrsz);
  extern int close(int socket);
+ 
 int main()
 {
  char addr[0x10] = 
