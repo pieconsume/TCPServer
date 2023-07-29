@@ -60,7 +60,7 @@ int main()
       close(sockfds[i]); //Close the client
       sockfds[i] = -1;   //Clear the fd index
      }
-     else                                              //Otherwise relay the message to all other clients
+     else                                       //Otherwise relay the message to all other clients
      {
       for(int j = 2; j < 0x400; j += 2)
       {

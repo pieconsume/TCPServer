@@ -24,15 +24,15 @@ int main()
   poll(fds, 2, -1);
   if (fds[1]>>16 == 1)
   {
-   fds[1] = 1;                   //Clear the event notifier
+   fds[1] = 1;                       //Clear the event notifier
    int size = read(0, buffer, 0xFF); //Read from stdin
-   write(client, buffer, size);  //Send the message to the server
+   write(client, buffer, size);      //Send the message to the server
   }
   if (fds[3]>>16 == 1)
   {
-   fds[3] = 1;                        //Clear the event notifier
+   fds[3] = 1;                            //Clear the event notifier
    int size = read(client, buffer, 0xFF); //Read message from the server
-   write(1, buffer, size);            //Write message to stdout
+   write(1, buffer, size);                //Write message to stdout
   }
  }
 }
