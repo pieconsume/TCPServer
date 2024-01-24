@@ -1,4 +1,5 @@
 //Defs
+ #define windows
  #ifdef windows
   #define sock unsigned long
   extern int WSAStartup(short int version, void* data);
@@ -14,7 +15,7 @@
  extern int setsockopt(sock socket, int level, int name,void* value, int valuesz);
  extern int bind(sock socket, void* addr, int addrlen);
  extern int listen(sock socket, int backlog);
- extern sock accept(sock listener, void* addrinfo, int addrlen);
+ extern sock accept(sock listener, void* addrinfo, int* addrlen);
  extern int recv(sock socket, char* buffer, int len, int flags);
  extern int send(sock socket, char* buffer, int len, int flags);
 
@@ -30,7 +31,7 @@ int main()
  };
  int on = 1;
  #ifdef windows
-  char wsadata[11];
+  char wsadata[16];
   WSAStartup(0x0202, wsadata);
   #endif
  sock listener = socket(2, 1, 0);

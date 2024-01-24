@@ -1,4 +1,5 @@
 //Defs
+ #define windows
  #ifdef windows
   #define sock unsigned long
   extern int WSAStartup(short int version, void* data);
@@ -26,8 +27,8 @@ int main()
   0, 0, 0, 0, 0, 0, 0, 0,
  };
  #ifdef windows
-  char wsadata[11];
-  WSAStartup(0x2020, wsadata);
+  char wsadata[16];
+  WSAStartup(0x0202, wsadata);
   #endif
  while (1)
  {

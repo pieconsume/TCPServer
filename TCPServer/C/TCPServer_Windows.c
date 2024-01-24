@@ -13,8 +13,7 @@ extern int closesocket(ulong socket);
 
 int main()
 {
- char buffer[256];
- char wsadata[11];
+ char buffer[0x100];
  char sockaddr[0x10] =
  {
   2, 0,
@@ -23,6 +22,7 @@ int main()
   0, 0, 0, 0, 0, 0, 0, 0,
  };
  int on = 1;
+ char wsadata[16];
  WSAStartup(0x0202, wsadata);
  ulong listener = socket(2, 1, 0);
  setsockopt(listener, 1, 15, &on, 4);

@@ -1,4 +1,4 @@
-//Defs
+//Defs              
  #define ulong unsigned long
  extern int read(int fd, char* buffer, int count);
  extern int write(int fd, char* buffer, int count);
@@ -12,7 +12,6 @@
 int main()
 {
  char buffer[0x100];
- char wsadata[11];
  char sockaddr[0x10] =
  {
   2, 0,
@@ -20,6 +19,7 @@ int main()
   127, 0, 0, 1,
   0, 0, 0, 0, 0, 0, 0, 0,
  };
+ char wsadata[16];
  WSAStartup(0x2020, wsadata);
  while (1)
  {
