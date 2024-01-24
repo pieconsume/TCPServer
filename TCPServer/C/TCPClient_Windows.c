@@ -12,7 +12,7 @@
 int main()
 {
  char buffer[0x100];
- char sockaddr[0x10] =
+ char addr[0x10] =
  {
   2, 0,
   3721>>8, 3721&0xFF,
@@ -25,7 +25,7 @@ int main()
  {
   int size = read(0, buffer, 0xFF);
   ulong client = socket(2, 1, 0);
-  connect(client, sockaddr, 0x10);
+  connect(client, addr, 0x10);
   send(client, buffer, size, 0);
   size = recv(client, buffer, 0xFF, 0);
   write(1, buffer, size);

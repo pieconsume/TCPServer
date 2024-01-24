@@ -7,6 +7,7 @@
 
 int main()
 {
+ char buffer[0x100];
  char addr[0x10] =
  { 
   2, 0,               //Address family in LSB. 0x02 is AF_INET/IPV4
@@ -14,7 +15,6 @@ int main()
   127, 0, 0, 1,       //IP address in MSB
   0,0,0,0,0,0,0,0     //Padding
  };
- char buffer[0x100];
  while(1)
  {
   int size = read(0, buffer, 0xFF); //Read the message from stdin

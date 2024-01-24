@@ -2,24 +2,24 @@
  #define windows
  #ifdef windows
   #define sock unsigned long
-  extern int WSAStartup(short int version, void* data);
-  extern int closesocket(sock socket);
+  extern "C" int WSAStartup(short int version, void* data);
+  extern "C" int closesocket(sock socket);
  #else
   #define sock int
-  extern int close(int fd);
+  extern "C" int close(int fd);
   #define closesocket close
   #endif
- extern int read(int fd, char* buffer, int count);
- extern int write(int fd, char* buffer, int count);
- extern sock socket(int af, int type, int protocol);
- extern int connect(sock socket, void* addr, int addrlen);
- extern int recv(sock socket, char* buffer, int len, int flags);
- extern int send(sock socket, char* buffer, int len, int flags);
+ extern "C" int read(int fd, char* buffer, int count);
+ extern "C" int write(int fd, char* buffer, int count);
+ extern "C" sock socket(int af, int type, int protocol);
+ extern "C" int connect(sock socket, void* addr, int addrlen);
+ extern "C" int recv(sock socket, const char* buffer, int len, int flags);
+ extern "C" int send(sock socket, const char* buffer, int len, int flags);
 
 int main()
 {
  char buffer[0x100];
- char addr[0x10] =
+ unsigned char addr[0x10] =
  {
   2, 0,
   3721>>8, 3721&0xFF,
