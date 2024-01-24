@@ -3,8 +3,7 @@
  import "fmt"
  import "net"
 
-func main()
-{
+func main(){
 	buf:=make([]byte, 0x100)
 	server,err:=net.Listen("tcp", ":3721")       //Create a server which listens on 3721
  //Neglected to set reuse here because I couldn't find a standard library function. Maybe I just missed it?

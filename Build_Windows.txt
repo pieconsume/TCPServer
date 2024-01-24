@@ -1,17 +1,17 @@
 Untested/unmade ASM     - nasm     file.asm -f bin -o file.exe
 C/C++   - clang    file.c -lWs2_32 -o file.exe
-Untested/unmade C#      - mcs      file.cs -out:file | mono file
-Untested/unmade Go      - go       run file.go
-Untested/unmade Python  - python   file.py
+C#      - mcs      file.cs -out:file | mono file
+Go      - go       run file.go
+Python  - python   file.py
 Untested/unmade R       - Rscript  file.r | gcc Bridge.c -use-ld=lld -fPIC -shared -o Bridge.so
 Untested/unmade Rust    - rustc    file.ru -C prefer-dynamic -C link-arg=-fuse-ld=lld -o file
-Untested/unmade Java    - javac    file.java | java file
-Untested/unmade Zig     - zig      run file.zig
+Java    - javac    file.java | java file
+Zig     - zig      run file.zig
 Untested/unmade Fortran - gfortran file.f90 -fuse-ld=lld -fno-range-check -o file
 Untested/unmade Haskell - ghc      file.hs -dynamic -o file
 Untested/unmade Lua     - lua      file.lua | gcc Bridge.c -use-ld=lld -fPIC -shared -llua5.3 -I/usr/include/lua5.3 -o Bridge.so
 Untested/unmade Pascal  - fpc      file.p -ofile
-Untested/unmade Perl    - perl     file.perl
-Untested/unmade Ruby    - ruby     file.ruby
-Untested/unmade Scala   - scalac   file.scala | scala file
-Untested/unmade Js      - node     file.js
+Perl    - perl     file.perl
+Ruby    - ruby     file.ruby
+Scala   - scalac   file.scala | scala file
+Js      - node     file.js
