@@ -1,18 +1,23 @@
 //Defs
- #define ulong unsigned long
+ #ifdef windows
+  #define sock unsigned long
+  extern int WSAStartup(short int version, void* data);
+  extern int closesocket(sock socket);
+ #else
+  #define sock int
+  extern int close(int fd);
+  #define closesocket close
+  #endif
  extern int read(int fd, char* buffer, int count);
  extern int write(int fd, char* buffer, int count);
- extern int WSAStartup(short int version, void* data);
- extern ulong socket(int af, int type, int protocol);
- extern int connect(ulong socket, void* addr, int addrlen);
- extern int recv(ulong socket, char* buffer, int len, int flags);
- extern int send(ulong socket, char* buffer, int len, int flags);
- extern int closesocket(ulong socket);
+ extern sock socket(int af, int type, int protocol);
+ extern int connect(sock socket, void* addr, int addrlen);
+ extern int recv(sock socket, char* buffer, int len, int flags);
+ extern int send(sock socket, char* buffer, int len, int flags);
 
 int main()
 {
 	char buffer[0x100];
- char wsadata[11];
  char sockaddr[0x10] =
  {
  	2, 0,
@@ -20,7 +25,10 @@ int main()
  	127, 0, 0, 1,
  	0, 0, 0, 0, 0, 0, 0, 0,
  };
-	WSAStartup(0x2020, wsadata);
+ #ifdef windows
+  char wsadata[11];
+ 	WSAStartup(0x2020, wsadata);
+  #endif
 	while (1)
 	{
 		int size = read(0, buffer, 0xFF);
