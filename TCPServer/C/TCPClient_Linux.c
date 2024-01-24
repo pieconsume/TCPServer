@@ -7,7 +7,7 @@
 
 int main()
 {
- char addr[0x10] = 
+ char addr[0x10] =
  { 
   2, 0,               //Address family in LSB. 0x02 is AF_INET/IPV4
   3721>>8, 3721&0xFF, //Port in MSB
