@@ -1,18 +1,18 @@
-//Defs              
- #define ulong unsigned long
- extern int read(int fd, char* buffer, int count);
- extern int write(int fd, char* buffer, int count);
+//Defs
+ #define sock unsigned long
+ extern int read(int fd, const char* buffer, int count);
+ extern int write(int fd, const char* buffer, int count);
  extern int WSAStartup(short int version, void* data);
- extern ulong socket(int af, int type, int protocol);
- extern int connect(ulong socket, void* addr, int addrlen);
- extern int recv(ulong socket, char* buffer, int len, int flags);
- extern int send(ulong socket, char* buffer, int len, int flags);
- extern int closesocket(ulong socket);
+ extern sock socket(int af, int type, int protocol);
+ extern int connect(sock socket, void* addr, int addrlen);
+ extern int recv(sock socket, const char* buffer, int len, int flags);
+ extern int send(sock socket, const char* buffer, int len, int flags);
+ extern int closesocket(sock socket);
 
 int main()
 {
  char buffer[0x100];
- char addr[0x10] =
+ unsigned char addr[0x10] =
  {
   2, 0,
   3721>>8, 3721&0xFF,
@@ -24,7 +24,7 @@ int main()
  while (1)
  {
   int size = read(0, buffer, 0xFF);
-  ulong client = socket(2, 1, 0);
+  sock client = socket(2, 1, 0);
   connect(client, addr, 0x10);
   send(client, buffer, size, 0);
   size = recv(client, buffer, 0xFF, 0);

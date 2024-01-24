@@ -9,8 +9,7 @@
   extern "C" int close(int fd);
   #define closesocket close
   #endif
- extern "C" int read(int fd, char* buffer, int buffersz);
- extern "C" int write(int fd, char* buffer, int count);
+ extern "C" int write(int fd, const char* buffer, int count);
  extern "C" sock socket(int af, int type, int protocol);
  extern "C" int setsockopt(sock socket, int level, int name,void* value, int valuesz);
  extern "C" int bind(sock socket, void* addr, int addrlen);

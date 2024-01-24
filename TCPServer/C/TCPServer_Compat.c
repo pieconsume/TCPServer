@@ -9,20 +9,19 @@
   extern int close(int fd);
   #define closesocket close
   #endif
- extern int read(int fd, char* buffer, int buffersz);
- extern int write(int fd, char* buffer, int count);
+ extern int write(int fd, const char* buffer, int count);
  extern sock socket(int af, int type, int protocol);
  extern int setsockopt(sock socket, int level, int name,void* value, int valuesz);
  extern int bind(sock socket, void* addr, int addrlen);
  extern int listen(sock socket, int backlog);
  extern sock accept(sock listener, void* addrinfo, int* addrlen);
- extern int recv(sock socket, char* buffer, int len, int flags);
- extern int send(sock socket, char* buffer, int len, int flags);
+ extern int recv(sock socket, const char* buffer, int len, int flags);
+ extern int send(sock socket, const char* buffer, int len, int flags);
 
 int main()
 {
  char buffer[0x100];
- char addr[0x10] =
+ unsigned char addr[0x10] =
  {
   2, 0,               //Address family in LSB. 0x02 is AF_INET/IPV4
   3721>>8, 3721&0xFF, //Port in MSB

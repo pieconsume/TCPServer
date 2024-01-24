@@ -1,6 +1,6 @@
-//Header files could be included instead but this lets you easily view function prototypes you use
- extern "C" int read(int fd, char* buffer, int buffersz);
- extern "C" int write(int fd, char* buffer, int count);
+//Defs
+ extern "C" int read(int fd, const char* buffer, int buffersz);
+ extern "C" int write(int fd, const char* buffer, int count);
  extern "C" int socket(int family, int type, int protocol);
  extern "C" int connect(int socket, void* address, int addrsz);
  extern "C" int close(int socket);

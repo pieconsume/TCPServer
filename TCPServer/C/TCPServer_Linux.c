@@ -1,6 +1,6 @@
-//Header files could be included instead but this lets you easily view function prototypes you use
- extern int read(int fd, char* buffer, int buffersz);
- extern int write(int fd, char* buffer, int count);
+//Defs
+ extern int read(int fd, const char* buffer, int buffersz);
+ extern int write(int fd, const char* buffer, int count);
  extern int socket(int family, int type, int protocol);
  extern int setsockopt(int socket, int level, int name,void* value, int valuesz);
  extern int bind(int socket, void* address, int addrsz);
@@ -11,7 +11,7 @@
 int main()
 {
  char buffer[0x100];
- char addr[0x10] =
+ unsigned char addr[0x10] =
  {
   2, 0,               //Address family in LSB. 0x02 is AF_INET/IPV4
   3721>>8, 3721&0xFF, //Port in MSB
@@ -21,7 +21,7 @@ int main()
  int on = 1;
  int server = socket(2, 1, 0);      //Create the server socket
  setsockopt(server, 1, 15, &on, 4); //Set reuse for quick restarts
- bind(server, &addr, 0x10);      //Bind the address
+ bind(server, &addr, 0x10);         //Bind the address
  listen(server, 5);                 //Set the socket as a listener
  while(1)
  {

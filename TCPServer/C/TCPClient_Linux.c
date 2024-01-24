@@ -1,6 +1,6 @@
-//Header files could be included instead but this lets you easily view function prototypes you use
- extern int read(int fd, char* buffer, int buffersz);
- extern int write(int fd, char* buffer, int count);
+//Defs
+ extern int read(int fd, const char* buffer, int buffersz);
+ extern int write(int fd, const char* buffer, int count);
  extern int socket(int family, int type, int protocol);
  extern int connect(int socket, void* address, int addrsz);
  extern int close(int socket);
@@ -8,7 +8,7 @@
 int main()
 {
  char buffer[0x100];
- char addr[0x10] =
+ unsigned char addr[0x10] =
  { 
   2, 0,               //Address family in LSB. 0x02 is AF_INET/IPV4
   3721>>8, 3721&0xFF, //Port in MSB
