@@ -30,7 +30,7 @@ int main()
  };
  int on = 1;
  #ifdef windows
-  char wsadata[16];
+  char wsadata[18];
   WSAStartup(0x0202, wsadata);
   #endif
  sock listener = socket(2, 1, 0);

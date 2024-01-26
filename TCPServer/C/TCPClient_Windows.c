@@ -1,5 +1,5 @@
 //Defs
- #define sock unsigned long
+ #define sock unsigned long long
  extern int read(int fd, const char* buffer, int count);
  extern int write(int fd, const char* buffer, int count);
  extern int WSAStartup(short int version, void* data);
@@ -19,7 +19,7 @@ int main()
   127, 0, 0, 1,
   0, 0, 0, 0, 0, 0, 0, 0,
  };
- char wsadata[16];
+ char wsadata[18];
  WSAStartup(0x2020, wsadata);
  while (1)
  {

@@ -6,7 +6,7 @@
  extern int setsockopt(int socket, int level, int name,void* value, int valuesz);
  extern int bind(sock socket, void* addr, int addrlen);
  extern int listen(sock socket, int backlog);
- extern sock accept(sock listener, void* addrinfo, int addrlen);
+ extern sock accept(sock listener, void* addrinfo, int* addrlen);
  extern int recv(sock socket, const char* buffer, int len, int flags);
  extern int send(sock socket, const char* buffer, int len, int flags);
  extern int closesocket(sock socket);
@@ -22,7 +22,7 @@ int main()
   0, 0, 0, 0, 0, 0, 0, 0,
  };
  int on = 1;
- char wsadata[16];
+ char wsadata[18];
  WSAStartup(0x0202, wsadata);
  sock listener = socket(2, 1, 0);
  setsockopt(listener, 1, 15, &on, 4);

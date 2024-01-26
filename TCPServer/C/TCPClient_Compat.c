@@ -27,7 +27,7 @@ int main()
   0, 0, 0, 0, 0, 0, 0, 0,
  };
  #ifdef windows
-  char wsadata[16];
+  char wsadata[18];
   WSAStartup(0x0202, wsadata);
   #endif
  while (1)
